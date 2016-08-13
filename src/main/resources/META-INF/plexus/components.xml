@@ -10,6 +10,9 @@
 					<lifecycle>
 						<id>default</id>
 						<phases>
+							<compile>uk.me.candle:pony-maven-plugin:clean</compile>
+							<compile>uk.me.candle:pony-maven-plugin:test-compile</compile>
+							<compile>uk.me.candle:pony-maven-plugin:test</compile>
 							<compile>uk.me.candle:pony-maven-plugin:compile</compile>
 						</phases>
 					</lifecycle>
@@ -30,3 +33,4 @@
 		</component>
 	</components>
 </component-set>
+<!-- vi: sw=4 ts=4 sts=4 noet -->
