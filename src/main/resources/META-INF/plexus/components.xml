@@ -11,7 +11,7 @@
             <role>org.apache.maven.lifecycle.Lifecycle</role>
             <implementation>org.apache.maven.lifecycle.Lifecycle</implementation>
             <configuration>
-                <id>default</id>
+                <id>test</id>
                 <phases>
                     <phase>pony-test-compile</phase>
                     <phase>pony-test</phase>
