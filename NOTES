@@ -1,0 +1,30 @@
+
+
+for clean
+1 rm -rf target
+
+
+for package
+1 copy src/*/* to target/build
+2 zip target/build to target/${artifactId}.zip
+
+for build
+1 copy src/main/pony to target/build
+2 copy/unpack dependencies to target/build/${artifactId}
+3 compile using target/build/${groupId}/${artifactId} as working dir and target/${groupId}-${artifactId} as the binary
+
+for test
+
+1 copy src/main/pony to target/test/
+2 copy src/test/pony/* to target/test/test-*
+3 copy/unpack dependencies to target/test/${artifactId}
+4 compile with working dir on target/test/test/${groupId}/${artifactId} and output in as target/
+5 run target/$test-bibary
+
+- problems:
+-- both src and test share the same groupId and artifactId, and can contain a 'main.pony' --> rename the test/pony/${artifactId} to 'test-${artifactId}' as the tests reference the main source using "../"(etc) in their 'use' statements. and the direction of dependency is always test -> main.
+
+
+for install
+1 copy target/${artifactId}.zip to $localRepo
+
