@@ -3,57 +3,6 @@
 	<components>
 		<component>
 			<role-hint>pony</role-hint>
-			<role>org.apache.maven.lifecycle.mapping.LifecycleMapping</role>
-			<implementation>org.apache.maven.lifecycle.mapping.DefaultLifecycleMapping</implementation>
-		</component>
-		<component>
-			<role-hint>pony</role-hint>
-			<role>org.apache.maven.lifecycle.Lifecycle</role>
-			<implementation>org.apache.maven.lifecycle.Lifecycle</implementation>
-			<configuration>
-				<id>test</id>
-				<phases>
-					<phase>pony-test-compile</phase>
-					<phase>pony-test</phase>
-				</phases>
-				<default-phases>
-					<pony-test-compile>uk.me.candle:pony-maven-plugin:test-compile</pony-test-compile>
-					<pony-test>uk.me.candle:pony-maven-plugin:test</pony-test>
-				</default-phases>
-			</configuration>
-		</component>
-		<component>
-			<role-hint>pony</role-hint>
-			<role>org.apache.maven.lifecycle.Lifecycle</role>
-			<implementation>org.apache.maven.lifecycle.Lifecycle</implementation>
-			<configuration>
-				<id>install</id>
-				<phases>
-					<phase>pony-package</phase>
-					<phase>install</phase>
-				</phases>
-				<default-phases>
-					<pony-package>uk.me.candle:pony-maven-plugin:package</pony-package>
-					<pony-package>org.apache.maven.plugins:maven-install-plugin:install</pony-package>
-				</default-phases>
-			</configuration>
-		</component>
-		<component>
-			<role-hint>pony</role-hint>
-			<role>org.apache.maven.lifecycle.Lifecycle</role>
-			<implementation>org.apache.maven.lifecycle.Lifecycle</implementation>
-			<configuration>
-				<id>build</id>
-				<phases>
-					<phase>pony-compile</phase>
-				</phases>
-				<default-phases>
-					<pony-package>uk.me.candle:pony-maven-plugin:compile</pony-package>
-				</default-phases>
-			</configuration>
-		</component>
-		<component>
-			<role-hint>pony</role-hint>
 			<role>org.apache.maven.artifact.handler.ArtifactHandler</role>
 			<implementation>org.apache.maven.artifact.handler.DefaultArtifactHandler</implementation>
 			<configuration>
@@ -62,6 +11,58 @@
 				<packaging>pony</packaging>
 				<language>pony</language>
 				<addedToClasspath>false</addedToClasspath>
+			</configuration>
+		</component>
+		<component>
+			<role-hint>pony-compile</role-hint>
+			<role>org.apache.maven.lifecycle.Lifecycle</role>
+			<implementation>org.apache.maven.lifecycle.Lifecycle</implementation>
+			<configuration>
+				<id>pony-compile</id>
+				<phases>
+					<phase>pony-compile</phase>
+				</phases>
+			</configuration>
+		</component>
+		<component>
+			<role-hint>pony-test</role-hint>
+			<role>org.apache.maven.lifecycle.Lifecycle</role>
+			<implementation>org.apache.maven.lifecycle.Lifecycle</implementation>
+			<configuration>
+				<id>pony-test</id>
+				<phases>
+					<phase>pony-test-compile</phase>
+					<phase>pony-test</phase>
+				</phases>
+			</configuration>
+		</component>
+		<component>
+			<role-hint>pony</role-hint>
+			<role>org.apache.maven.lifecycle.mapping.LifecycleMapping</role>
+			<implementation>org.apache.maven.lifecycle.mapping.DefaultLifecycleMapping</implementation>
+			<configuration>
+				<lifecycles>
+					<lifecycle>
+						<id>default</id>
+						<phases>
+							<package>uk.me.candle:pony-maven-plugin:package</package>
+							<install>org.apache.maven.plugins:maven-install-plugin:install</install>
+						</phases>
+					</lifecycle>
+					<lifecycle>
+						<id>pony-build</id>
+						<phases>
+							<pony-package>uk.me.candle:pony-maven-plugin:compile</pony-package>
+						</phases>
+					</lifecycle>
+					<lifecycle>
+						<id>pony-test</id>
+						<phases>
+							<pony-test-compile>uk.me.candle:pony-maven-plugin:test-compile</pony-test-compile>
+							<pony-test>uk.me.candle:pony-maven-plugin:test</pony-test>
+						</phases>
+					</lifecycle>
+				</lifecycles>
 			</configuration>
 		</component>
 	</components>
