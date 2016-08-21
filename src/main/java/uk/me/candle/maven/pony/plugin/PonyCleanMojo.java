@@ -19,7 +19,7 @@ public class PonyCleanMojo extends AbstractMojo {
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		File target = new File(project.getBuild().getDirectory());
 		getLog().info("cleaning " + target.getAbsolutePath());
-		try {
+		try { // XXX use a pure java way to clean.
 			Process p = new ProcessBuilder("rm", "-rvf", target.getAbsolutePath())
 					.redirectErrorStream(true)
 					.inheritIO()

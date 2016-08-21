@@ -28,3 +28,16 @@ for test
 for install
 1 copy target/${artifactId}.zip to $localRepo
 
+
+Project layout
+src/main/pony/$groupId/$artifactId
+ - fewer "../" in paths?
+
+imports by 'use "$groupId/$artifactId"' --> easy to identify where code comes from.
+
+What file extension?
+zip: generic, known, obvious.
+pony-zip: identifies the contents.
+pzip: ?
+zipony: !!!
+
