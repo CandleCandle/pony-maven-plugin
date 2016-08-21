@@ -25,7 +25,7 @@ public class PonyTestCompileMojo extends AbstractMojo {
 		//--path "${basedir}/src/main/pony/" 
 		List<String> command = Lists.newArrayList("ponyc",
 					"--output", target.toPath().resolve("test").toString(),
-					"--path", project.getBasedir().toPath().resolve("src").resolve("main").resolve("pony").toString());
+					"--path", project.getBasedir().toPath().resolve("src").resolve("main").resolve("pony").toString()); // XXX get the src directory from the project.
 		// dependencies as more --path elements.
 		getLog().info("Command:" + command);
 		try {
