@@ -1,6 +1,17 @@
 package uk.me.candle.maven.pony.plugin;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.Collections;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.DefaultArtifact;
 import org.apache.maven.artifact.handler.ArtifactHandler;
@@ -28,15 +39,28 @@ public class PonyDepsMojo extends AbstractMojo {
 
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		File target = new File(project.getBuild().getDirectory());
-//		ArtifactHandler artifactHandler = project.getArtifact().getArtifactHandler();
-		getLog().info("handler: " + artifactHandler);
 		for (Dependency dep : project.getDependencies()) {
 			//dep.
 			Artifact art1 = localRepository.find(new DefaultArtifact(dep.getGroupId(), dep.getArtifactId(), dep.getVersion(), null, "pony", null, artifactHandler));
-			getLog().debug("found artifact: " + art1);
 			String art2 = localRepository.pathOf(art1);
-			getLog().debug("found artifact: " + art1 + " at path " + art2);
+			String basePath = localRepository.getBasedir();
+			getLog().info("found artifact: " + art1 + " at path " + basePath + " -- " + art2);
+			try {
+				ZipFile zf = new ZipFile(basePath + File.separator + art2 + ".zip");
+				new File(basePath + File.separator + art2).mkdirs();
+				for (ZipEntry entry : Collections.list(zf.entries())) {
+					if (entry.isDirectory()) continue;
+					Path destination = Paths.get(basePath, art2, entry.getName());
+					getLog().info("Unpacking entry " + entry.getName() + " to " + destination);
+					destination.getParent().toFile().mkdirs();
+					Files.copy(
+							zf.getInputStream(entry),
+							destination,
+							StandardCopyOption.REPLACE_EXISTING);
+				}
+			} catch (IOException ex) {
+				throw new MojoFailureException(ex.getMessage(), ex);
+			}
 		}
 
 	}
