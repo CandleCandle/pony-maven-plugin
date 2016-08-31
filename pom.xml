@@ -131,8 +131,9 @@
 	</profiles>
 
 	<scm>
-		<connection>scm:git:file://.</connection>
-		<developerConnection>scm:git:file://.</developerConnection>
+		<connection>scm:git:git@github.com:CandleCandle/pony-maven-plugin.git</connection>
+		<developerConnection>scm:git:git@github.com:CandleCandle/pony-maven-plugin.git</developerConnection>
+		<url>https://github.com/CandleCandle/pony-maven-plugin</url>
 		<tag>HEAD</tag>
 	</scm>
 
