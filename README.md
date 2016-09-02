@@ -6,21 +6,21 @@ Getting Started
 
 Create a pom.xml, this plugin *must* be in the plugins list.
 
-'''xml
+```xml
 <plugin>
 	<groupId>uk.me.candle</groupId>
 	<artifactId>pony-maven-plugin</artifactId>
 	<version>.. latest ..</version>
 	<extensions>true</extensions>
 </plugin>
-'''
+```
 (there is a sample, minimal pom.xml towards the end)
 
 To select a version, either ommit the version element, to pick the latest version from Maven Central or use https://search.maven.org to find the available versions and select one.
 
 
 Following the standard Maven layout, the directory structure should look a little like this, note that the `target` directory is created by the plugin/maven
-'''
+```
 .
 ├── pom.xml
 ├── src
@@ -37,7 +37,7 @@ Following the standard Maven layout, the directory structure should look a littl
 │                   └── test.pony
 └── target
     └── pony-eventbus-0.6-SNAPSHOT.zip
-'''
+```
 Note that some of these directories can be configured in the `pom.xml`, however, for convention's sake it is advised that this layout is used.
 
 `mvn clean` will delete the `target` directory, thus giving you a fresh start.
@@ -55,7 +55,7 @@ Appendicies
 Sample `pom.xml`
 ----------------
 
-'''xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -74,7 +74,7 @@ Sample `pom.xml`
 		</plugins>
 	</build>
 </project>
-'''
+```
 
 Rationale for various decisions
 -------------------------------
