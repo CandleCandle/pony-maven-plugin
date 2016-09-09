@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>uk.me.candle</groupId>
 	<artifactId>pony-maven-plugin</artifactId>
-	<version>0.5-SNAPSHOT</version>
+	<version>0.5</version>
 	<packaging>maven-plugin</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -135,7 +135,7 @@
 		<connection>scm:git:git@github.com:CandleCandle/pony-maven-plugin.git</connection>
 		<developerConnection>scm:git:git@github.com:CandleCandle/pony-maven-plugin.git</developerConnection>
 		<url>https://github.com/CandleCandle/pony-maven-plugin</url>
-		<tag>HEAD</tag>
+		<tag>pony-maven-plugin-0.5</tag>
 	</scm>
 
 	<licenses>
