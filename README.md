@@ -16,7 +16,7 @@ Create a pom.xml, this plugin *must* be in the plugins list.
 ```
 (there is a sample, minimal pom.xml towards the end)
 
-To select a version, either ommit the version element, to pick the latest version from Maven Central or use https://search.maven.org to find the available versions and select one.
+To select a version, either ommit the version element, to pick the latest version from Maven Central or use http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22pony-maven-plugin%22 to find the available versions and select one.
 
 
 Following the standard Maven layout, the directory structure should look a little like this, note that the `target` directory is created by the plugin/maven
@@ -36,13 +36,13 @@ Following the standard Maven layout, the directory structure should look a littl
 │                   ├── \_test\_something.pony
 │                   └── test.pony
 └── target
-    └── pony-eventbus-0.6-SNAPSHOT.zip
+    └── ${artifactId}-${version}.zip
 ```
 Note that some of these directories can be configured in the `pom.xml`, however, for convention's sake it is advised that this layout is used.
 
 `mvn clean` will delete the `target` directory, thus giving you a fresh start.
 `mvn pony-test` will do a `pony-test-compile` and then run the tests.
-`mvn pony-compile` will compile the main code without the tests, generating a binary in the `target` directory.
+`mvn pony-compile` will compile the main code without the tests, generating a binary in the `target/build` directory.
 `mvn install` will do a `package` then copy the artifact to your local maven repository, making it available as a library, at the version specified in the pom to other pony projects on your local computer.
 
 
