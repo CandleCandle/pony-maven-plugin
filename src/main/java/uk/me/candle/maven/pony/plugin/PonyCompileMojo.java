@@ -18,4 +18,4 @@ public class PonyCompileMojo extends AbstractMojo {
 		getLog().info("maybe compiling " + project.getArtifactId());
 	}
 }
-// vi: sw=4 ts=4 sts=4 noet
+// vim: sw=4 ts=4 sts=4 noet

@@ -4,14 +4,12 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
-import java.nio.file.FileVisitor;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -53,4 +51,4 @@ public class PonyPackageMojo extends AbstractMojo {
 		project.getArtifact().setFile(output);
 	}
 }
-// vi: sw=4 ts=4 sts=4 noet
+// vim: sw=4 ts=4 sts=4 noet
