@@ -38,7 +38,7 @@ public class PonyTestCompileMojo extends AbstractMojo {
 					"--output", target.toPath().resolve("test").toString(),
 					"--path", project.getBasedir().toPath().resolve("src").resolve("main").resolve("pony").toString()); // XXX get the src directory from the project.
 		// dependencies as more --path elements.
-		for (String s : dependencyHandler.getPathElements("test", "compile")){
+		for (String s : dependencyHandler.getPathElements("compile", "provided", "runtime", "test")){
 			command.add("--path");
 			command.add(s);
 		}

@@ -14,13 +14,13 @@
 			</configuration>
 		</component>
 		<component>
-			<role-hint>pony-compile</role-hint>
+			<role-hint>pony-build</role-hint>
 			<role>org.apache.maven.lifecycle.Lifecycle</role>
 			<implementation>org.apache.maven.lifecycle.Lifecycle</implementation>
 			<configuration>
-				<id>pony-compile</id>
+				<id>pony-build</id>
 				<phases>
-<!--					<phase>pony-unpack-deps</phase>-->
+					<phase>pony-unpack-deps</phase>
 					<phase>pony-compile</phase>
 				</phases>
 			</configuration>
@@ -32,7 +32,7 @@
 			<configuration>
 				<id>pony-test</id>
 				<phases>
-					<phase>pony-unpack-deps</phase>
+					<phase>pony-test-unpack-deps</phase>
 					<phase>pony-test-compile</phase>
 					<phase>pony-test</phase>
 				</phases>
@@ -55,14 +55,14 @@
 					<lifecycle>
 						<id>pony-build</id>
 						<phases>
-<!--							<pony-package>uk.me.candle:pony-maven-plugin:unpack-deps</pony-package>-->
-							<pony-package>uk.me.candle:pony-maven-plugin:compile</pony-package>
+							<pony-unpack-deps>uk.me.candle:pony-maven-plugin:pony-unpack-deps</pony-unpack-deps>
+							<pony-compile>uk.me.candle:pony-maven-plugin:compile</pony-compile>
 						</phases>
 					</lifecycle>
 					<lifecycle>
 						<id>pony-test</id>
 						<phases>
-							<pony-unpack-deps>uk.me.candle:pony-maven-plugin:pony-unpack-deps</pony-unpack-deps>
+							<pony-test-unpack-deps>uk.me.candle:pony-maven-plugin:pony-unpack-deps</pony-test-unpack-deps>
 							<pony-test-compile>uk.me.candle:pony-maven-plugin:test-compile</pony-test-compile>
 							<pony-test>uk.me.candle:pony-maven-plugin:test</pony-test>
 						</phases>
