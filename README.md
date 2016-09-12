@@ -46,8 +46,22 @@ Note that some of these directories can be configured in the `pom.xml`, however,
 `mvn install` will do a `package` then copy the artifact to your local maven repository, making it available as a library, at the version specified in the pom to other pony projects on your local computer.
 
 
-If you have created some code that can be used as a library, then you can add a dependency in another project as per the standard maven way. In your pony code, you should be able to `use "${groupId}/${artifactId}"` to import the public classes from that library.
+If you have created some code that can be used as a library, then you can add a dependency in another project as per the standard maven way. Ensure you specify a `type` element with the value of `zip` otherwise maven assumes that you want a `jar`. In your pony code, you should be able to `use "${groupId}/${artifactId}"` to import the public classes from that library.
 
+Depending on Another Pony Library
+---------------------------------
+
+As usual with Maven, except ensure the `type` is set to `zip`.
+```
+<dependencies>
+	<dependency>
+		<groupId>${groupId}</groupId>
+		<artifactId>${artifactId}</artifactId>
+		<version>${version}</version>
+		<type>zip</type>
+	</dependency>
+</dependencies>
+```
 
 Appendicies
 ===========
