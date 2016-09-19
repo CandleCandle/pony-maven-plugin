@@ -39,7 +39,7 @@ public class PonyPackageMojo extends AbstractMojo {
 				@Override
 				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
 					getLog().debug("Adding " + file.toString() + " to archive");
-					zos.putNextEntry(new ZipEntry(srcBase.relativize(file).toString()));
+					zos.putNextEntry(new ZipEntry(srcBase.relativize(file).toString().replace('\\', '/')));
 					Files.copy(file, zos);
 					zos.closeEntry();
 					return FileVisitResult.CONTINUE;

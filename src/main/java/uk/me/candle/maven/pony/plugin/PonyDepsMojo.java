@@ -50,7 +50,7 @@ public class PonyDepsMojo extends AbstractMojo {
 				new File(basePath + File.separator + art2).mkdirs();
 				for (ZipEntry entry : Collections.list(zf.entries())) {
 					if (entry.isDirectory()) continue;
-					Path destination = Paths.get(basePath, art2, entry.getName());
+					Path destination = Paths.get(basePath, art2, entry.getName().replace('\\', '/'));
 					getLog().info("Unpacking entry " + entry.getName() + " to " + destination);
 					destination.getParent().toFile().mkdirs();
 					Files.copy(
