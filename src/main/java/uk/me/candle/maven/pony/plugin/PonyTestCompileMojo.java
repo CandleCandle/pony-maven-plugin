@@ -12,9 +12,10 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.plugins.annotations.ResolutionScope;
 import org.apache.maven.project.MavenProject;
 
-@Mojo(name = "test-compile")
+@Mojo(name = "test-compile", requiresDependencyResolution=ResolutionScope.TEST)
 public class PonyTestCompileMojo extends AbstractMojo {
 
 	@Parameter(defaultValue = "${project}", required = true, readonly = true)
