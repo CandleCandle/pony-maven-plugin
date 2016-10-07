@@ -82,7 +82,7 @@ Sample `pom.xml`
 			<plugin>
 				<groupId>uk.me.candle</groupId>
 				<artifactId>pony-maven-plugin</artifactId>
-				<version>0.4</version>
+				<version>0.6</version>
 				<extensions>true</extensions><!-- tells maven to scan this plugin for additional packaging types -->
 			</plugin>
 		</plugins>
