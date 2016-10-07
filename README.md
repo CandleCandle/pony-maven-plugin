@@ -101,3 +101,9 @@ Tests in a directory named the same as the main code (src/main/*${groupId}/${art
 
 
 Using a .zip format, java supports it, it's use should be transparant.
+
+
+Extracting the zip files to their directory in the local repository rather than into the `target` directory of the project
+* non-snapshot dependencies are expected to be immutable
+* only extract once
+* predictable location
